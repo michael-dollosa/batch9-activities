@@ -1,0 +1,250 @@
+
+//coffee
+
+.our-coffee {
+  // background-color: lightblue;
+  // height: 90vh;
+  margin-top: 10rem;
+
+  @include flex-col-center();
+  .coffee-container {
+    // background-color: #8E999C;
+    @include section-container();
+    @media only screen and (max-width: 840px) {
+      @include flex-col-center();
+      flex-direction: column-reverse;
+    }
+    .coffee-image {
+      // background-color: violet;
+      @include flex-col-center();
+      align-items: flex-start;
+      flex: 1;
+
+      >.img-border {
+        height: 58rem;
+        width: 40rem;
+        // background-color: black;
+        @include flex-col-center();
+        position: relative;
+  
+        @media only screen and (max-width: 1066px) {
+          height: 50rem;
+          width: 33rem;
+        }
+  
+        @media only screen and (max-width: 840px) {
+          height: auto;
+          width: 100%;
+          margin-top: 3rem;
+        }
+  
+      }
+  
+      >.img-border >img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+  
+      >.img-border::before {
+        // z-index: -1;
+        content: '';
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: -3rem;
+        left: -3rem;
+        // background-color: blue;
+        @include border-image();
+  
+        @media only screen and (max-width: 320px) {
+          bottom: -1rem;
+          right: -1rem;
+        }
+      }
+    }
+  }
+
+  .content-container {
+    // background-color: red;
+    @include flex-col-center();
+    align-items: flex-start;
+    flex: 1;
+    // margin-top: -10rem;
+    padding-left: 3rem;
+    position: relative;
+
+    @media only screen and (max-width: 840px) {
+      // margin-top: 40rem;
+      margin-bottom: 0;
+      padding-left: 0;
+    }
+
+    >.content-container-sub {
+      // background-color: #A67A5E;
+      // width: 80%;
+      @media only screen and (max-width: 840px) {
+        width: 100%;
+      }
+    }
+
+    >.content-container-sub::after {
+      z-index: -1;
+      content: '';
+      height: 90%;
+      width: 50%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: $color-primary-brown-light;
+      opacity: .3;
+
+      @media only screen and (max-width: 840px) {
+        display: none;
+      }
+    }
+
+    >.content-container-sub >h2 {
+      font-family: 'Prata', serif;
+      font-size: $heading-font-size-body;
+      font-weight: 100;
+      letter-spacing: .2rem;
+      padding-bottom: 3rem;
+
+      @media only screen and (max-width: 1066px) {
+        font-size: 3rem;
+      }
+
+      @media only screen and (max-width: 840px) {
+        font-size: 2rem;
+        
+      }
+
+      @media only screen and (max-width: 320px) {
+        font-size: 1.7rem;
+      }
+    }
+
+    >.content-container-sub >h2::after {
+        content: '';
+        display: block;
+        width: 30%;
+        padding-top: 2rem;
+        border-bottom: 2px solid $color-primary-brown;
+
+        @media only screen and (max-width: 680px) {
+          width: 40%;
+        }
+    }
+  }
+}
+
+.video {
+  background-color: #f5f5f5;
+  margin-top: 10rem;
+  width: 100%;
+  // height: auto;
+  >.video-container {
+    // background-color: violet;
+    padding: 10rem 0 20rem 0;
+    @include flex-col-center();
+
+    @media only screen and (max-width: 840px) {
+      padding: 5rem 0 10rem 0;
+    }
+
+    @media only screen and (max-width: 320px) {
+      padding: 2.5rem 0 8rem 0;
+    }
+
+    .content-container {
+      // background-color: blue;
+      @include flex-col-center();
+      align-self: flex-start;
+      flex: 1;
+      padding-left: 10%;
+      position: relative;
+  
+      @media only screen and (max-width: 840px) {
+        margin-bottom: 0;
+        padding-left: 0;
+      }
+
+      >.content-container-sub {
+        @media only screen and (max-width: 840px) {
+          width: 80%;
+        }
+      }
+      >.content-container-sub >p {
+        padding-right: 10%;
+      }
+      >.content-container-sub >h2 {
+        font-family: 'Prata', serif;
+        font-size: $heading-font-size-body;
+        font-weight: 100;
+        letter-spacing: .2rem;
+        padding-bottom: 3rem;
+  
+        @media only screen and (max-width: 1066px) {
+          font-size: 3rem;
+        }
+  
+        @media only screen and (max-width: 840px) {
+          font-size: 2rem;
+          
+        }
+  
+        @media only screen and (max-width: 320px) {
+          font-size: 1.7rem;
+        }
+      }
+  
+      >.content-container-sub >h2::after {
+          content: '';
+          display: block;
+          width: 10%;
+          padding-top: 2rem;
+          border-bottom: 2px solid $color-primary-brown;
+  
+          @media only screen and (max-width: 680px) {
+            width: 40%;
+          }
+      }
+    }
+
+    .video-source {
+      // background-color: red;
+      width: 70rem;
+      height: 45rem;
+      @media only screen and (max-width: 840px) {
+        width: 80%;
+        height: 30rem;
+      }
+
+      @media only screen and (max-width: 650px) {
+        width: 60%;
+        height: 17rem;
+      }
+
+      @media only screen and (max-width: 400px) {
+        width: 90%;
+        height: 17rem;
+      }
+
+      // @media only screen and (max-width: 320px) {
+      //   height: 20rem;
+      // }
+      >video {
+        margin-top: 8rem;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+
+      @media only screen and (max-width: 320px) {
+        margin-top: 3rem;
+      }
+      }
+    }
+
+  }
+}

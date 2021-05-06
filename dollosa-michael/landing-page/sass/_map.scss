@@ -1,0 +1,176 @@
+.map {
+  // background-color: #dad8d8;
+  margin-top: 3rem;
+  // @include border-image();
+  @include flex-col-center();
+
+  @media only screen and (max-width: 840px) {
+    margin-top: 5rem;
+  }
+  .map-container {
+    margin: 10rem 0 10rem 0;
+    
+    @include section-container();
+    @media only screen and (max-width: 840px) {
+      @include flex-col-center();
+      margin: 5rem 0 5rem 0;
+      flex-direction: column-reverse;
+    }
+    .map-image {
+      // background-color: violet;
+      @include flex-col-center();
+      align-items: flex-end;
+      flex: 1;
+
+      >.img-border {
+        height: 55rem;
+        width: 45rem;
+
+        @include flex-col-center();
+        position: relative;
+  
+        @media only screen and (max-width: 1066px) {
+          height: 40rem;
+          width: 40rem;
+        }
+  
+        @media only screen and (max-width: 840px) {
+          height: auto;
+          width: 100%;
+          margin-top: 5rem;
+        }
+
+        @media only screen and (max-width: 320px) {
+          height: auto;
+          width: 100%;
+          margin-top: 5rem;
+        }
+  
+      }
+  
+      >.img-border >img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      >.img-border::before {
+        z-index: -1;
+        content: '';
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: -3rem;
+        right: -3rem;
+        @include border-image();
+  
+        @media only screen and (max-width: 320px) {
+          bottom: -1rem;
+          right: -1rem;
+        }
+      }
+  
+    }
+  }
+
+  .content-container {
+    @include flex-col-center();
+    align-items: center;
+    width: 100%;
+    flex: 1;
+    padding-left: 3rem;
+    position: relative;
+
+    @media only screen and (max-width: 840px) {
+      margin-bottom: 0;
+      padding-left: 0;
+      align-self: flex-start;
+    }
+
+    >.content-container-sub {
+
+      @media only screen and (max-width: 840px) {
+        width: 100%;
+      }
+
+      >h5 {
+        font-family: inherit;
+        font-weight: 500;
+        font-size: $default-font-size;
+        margin: 2rem 0 2rem 0;
+      }
+
+      >.operating-hours {
+        // background-color: #CD905E;
+        display: flex;
+        justify-content: flex-start;
+
+        >.days, .time {
+          >h6 {
+            font-family: inherit;
+            font-weight: 300;
+            font-size: $default-font-size-small;
+          }
+          >*:not(:last-child) {
+            margin-bottom: .5rem;
+          }
+        }
+        >.days {
+          flex: 1;
+        }
+        >.time {
+          flex: 1;
+        }
+      }
+    }
+
+    >.content-container-sub::after {
+      z-index: -1;
+      content: '';
+      height: 90%;
+      width: 50%;
+      position: absolute;
+      bottom: -5rem;
+      right: 0;
+      background-color: $color-primary-brown-light;
+      opacity: .3;
+
+      @media only screen and (max-width: 840px) {
+        display: none;
+      }
+    }
+
+    >.content-container-sub >h2 {
+      font-family: 'Prata', serif;
+      font-size: $heading-font-size-body;
+      font-weight: 100;
+      letter-spacing: .2rem;
+      padding-bottom: 3rem;
+
+      @media only screen and (max-width: 1066px) {
+        font-size: 3rem;
+      }
+
+      @media only screen and (max-width: 840px) {
+        font-size: 2rem;
+        
+      }
+
+      @media only screen and (max-width: 320px) {
+        font-size: 1.7rem;
+      }
+    }
+
+    >.content-container-sub >h2::after {
+        content: '';
+        display: block;
+        width: 30%;
+        padding-top: 2rem;
+        border-bottom: 2px solid $color-primary-brown;
+
+        @media only screen and (max-width: 680px) {
+          width: 40%;
+        }
+    }
+  }
+}
