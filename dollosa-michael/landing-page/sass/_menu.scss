@@ -1,16 +1,12 @@
-//about
-
-.about {
-  // background-color: lightblue;
-  // height: 90vh;
+.menu {
+  margin-top: 8rem;
   @include flex-col-center();
-  @media only screen and (max-width: 320px) {
-    margin-top: 5rem;
+  @media only screen and (max-width: 700px) {
+    margin-top: 4rem;
   }
 }
 
-.about-container {
-  // background-color: #CD905E;
+.menu-container {
   @include section-container();
 
   @media only screen and (max-width: 1066px) {
@@ -23,10 +19,9 @@
   }
 
   
-  .about-image {
+  .menu-image {
     @include flex-col-center();
     flex: 1;
-
     @media only screen and (max-width: 320px) {
       margin-top: 2rem;
       justify-content: flex-start;
@@ -34,7 +29,7 @@
     >.img-border {
       height: 58rem;
       width: 40rem;
-      // background-color: black;
+      background-color: black;
       @include flex-col-center();
       align-self: flex-end;
       position: relative;
@@ -69,9 +64,8 @@
       @include border-image();
 
       @media only screen and (max-width: 320px) {
-        top: 1rem;
-        left: 1rem;
-        // display: none;
+        bottom: -1rem;
+        right: -1rem;
       }
     }
   }
@@ -129,8 +123,6 @@
           width: 40%;
         }
     }
-
-    
   }
   
 }
