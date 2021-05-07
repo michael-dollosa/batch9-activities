@@ -1,12 +1,10 @@
 
 //survey
-const name = document.getElementById("name");
 const submitSurvey = document.getElementById("submitSurvey")
 const form = document.getElementById("survey-form")
 const errMsg = document.getElementById("invalid-msg")
-const successMsg = document.getElementById("success-msg")
 const filler = document.getElementById("filler")
-
+const modalSurvey = document.querySelector(".success-modal")
 
 submitSurvey.addEventListener('click', e => {
 
@@ -18,12 +16,8 @@ submitSurvey.addEventListener('click', e => {
 });
 
 form.addEventListener('submit', e => {
-  console.log("clicked submit fn")
-  modal.removeAttribute("id")
+  modalSurvey.removeAttribute("id")
+  form.reset()
   e.preventDefault();
   
 });
-
-// modalBtn.addEventListener('click', e => {
-//   modal.id = "modal"
-// });

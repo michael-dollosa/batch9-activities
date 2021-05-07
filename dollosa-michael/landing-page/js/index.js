@@ -5,9 +5,8 @@ const modalBtn = document.querySelector("#modal-btn")
 
 submit.addEventListener('submit', e => {
   modal.removeAttribute("id")
-  console.log("event function")
-  console.log(modal)
-  e.preventDefault();
+  submit.reset()
+  e.preventDefault()
   
 });
 
