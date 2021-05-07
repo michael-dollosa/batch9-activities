@@ -1,0 +1,17 @@
+//mixin
+@mixin flex-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin border-image {
+  border: 1px solid $color-primary-brown;
+}
+
+@mixin section-container {
+  height: 100%;
+  width: 80%;
+  display: flex;
+}

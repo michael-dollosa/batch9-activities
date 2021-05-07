@@ -1,0 +1,55 @@
+/* browser reset */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;  /* for all elements to inherit box-sizing attribute in body element css */
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px; 10px/16px = 62.5% -- 16px is default font size in browser*/
+    scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  box-sizing: border;
+  font-family: 'Lato', sans-serif;
+  font-size: $default-font-size;
+  font-weight: 300;
+  background-color: #FDFDFD;
+  
+  @media only screen and (max-width: 1066px) {
+    font-size: 1.2rem;
+  }
+}
+
+input:focus, textarea {
+  outline: none !important;
+}
+
+p {
+  word-spacing: .5rem;
+  line-height: 2rem;
+}
+
+button{
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 1.3rem;
+  letter-spacing: .2rem;
+  background-color: transparent;
+  @include border-image();
+  padding: 1.2rem 4rem 1.2rem 4rem;
+  color: $color-primary-brown-dark;
+  transition: .2s ease-in;
+
+  &:hover {
+    background-color: $color-primary-brown-light;
+    border: 1px solid transparent;
+    color: $color-white;
+  }
+}

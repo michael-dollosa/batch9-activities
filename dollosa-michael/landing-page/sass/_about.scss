@@ -1,0 +1,132 @@
+//about
+
+.about {
+  // background-color: lightblue;
+  // height: 90vh;
+  @include flex-col-center();
+}
+
+.about-container {
+  // background-color: #CD905E;
+  @include section-container();
+
+  @media only screen and (max-width: 1066px) {
+    margin-top: 0;
+  }
+
+  @media only screen and (max-width: 840px) {
+    @include flex-col-center();
+    margin-top: 2rem;
+  }
+
+  
+  .about-image {
+    @include flex-col-center();
+    flex: 1;
+
+    @media only screen and (max-width: 320px) {
+      margin-top: 2rem;
+      justify-content: flex-start;
+    }
+    >.img-border {
+      height: 58rem;
+      width: 40rem;
+      // background-color: black;
+      @include flex-col-center();
+      align-self: flex-end;
+      position: relative;
+
+      @media only screen and (max-width: 1066px) {
+        height: 50rem;
+        width: 33rem;
+      }
+
+      @media only screen and (max-width: 840px) {
+        height: auto;
+        width: 100%;
+        margin-left: 0;
+      }
+
+    }
+
+    >.img-border >img {
+      height: 100%;
+      width: 100%;
+      object-fit:cover;
+    }
+
+    >.img-border::before {
+      // z-index: -1;
+      content: '';
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      bottom: -3rem;
+      left: -3rem;
+      @include border-image();
+
+      @media only screen and (max-width: 320px) {
+        bottom: -1rem;
+        right: -1rem;
+      }
+    }
+  }
+
+  .content-container {
+    // background-color: red;
+    @include flex-col-center();
+    align-items: flex-end;
+    flex: 1;
+    // padding-top: -30rem;
+
+    @media only screen and (max-width: 840px) {
+      margin-bottom: 2rem;
+    }
+
+    @media only screen and (max-width: 680px) {
+      margin-top: 0;
+      width: 100%;
+    }
+
+    @media only screen and (max-width: 580px) {
+      margin-top: 7rem;
+    }
+
+    @media only screen and (max-width: 320px) {
+      margin-top: 0rem;
+      margin-bottom: 0;
+    }
+
+    >.content-container-sub >h2 {
+      font-family: 'Prata', serif;
+      font-size: $heading-font-size-body;
+      font-weight: 100;
+      letter-spacing: .2rem;
+      padding-bottom: 3rem;
+
+      @media only screen and (max-width: 1066px) {
+        font-size: 2rem;
+      }
+
+      @media only screen and (max-width: 840px) {
+        font-size: 2rem;
+        // padding-bottom: 0;
+      }
+      
+    }
+    >.content-container-sub >h2::after {
+        content: '';
+        display: block;
+        width: 30%;
+        padding-top: 2rem;
+        border-bottom: 2px solid $color-primary-brown;
+
+        @media only screen and (max-width: 680px) {
+          width: 40%;
+        }
+    }
+
+    
+  }
+  
+}
