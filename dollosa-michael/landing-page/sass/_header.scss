@@ -16,26 +16,6 @@
   }
 }
 
-button{
-  text-decoration: none;
-  cursor: pointer;
-  font-family: inherit;
-  font-weight: 300;
-  font-size: 1.3rem;
-  letter-spacing: .2rem;
-  background-color: transparent;
-  @include border-image();
-  padding: 1.2rem 4rem 1.2rem 4rem;
-  color: $color-primary-brown-dark;
-  transition: .2s ease-in;
-
-  &:hover {
-    background-color: $color-primary-brown-light;
-    border: 1px solid transparent;
-    color: $color-white;
-  }
-}
-
 header {
   margin: auto;
   padding-top: 3rem;
@@ -78,15 +58,6 @@ header {
   >img {
     margin-top: 4rem;
     height: 60px;
-  }
-
-  >h4 {
-    font-family: 'Mrs Saint Delafield', cursive;
-    font-weight: 300;
-    font-size: $heading-font-size-large;
-    margin-top: -3rem;
-    color: $color-primary-brown;
-    opacity: .7;
   }
 }
 
