@@ -18,10 +18,10 @@
 
 header {
   margin: auto;
-  padding-top: 3rem;
+  // padding-top: 3rem;
   @include flex-col-center();
   width: 90%;
-
+  height: 20vh;
   animation-name: moveIn;
   animation-duration: 1s;
   animation-timing-function: ease-out;
@@ -38,14 +38,11 @@ header {
 .border-clip {
   height: 5vh;
   width: 100%;
-  margin-top: -13rem;
-  margin-bottom: 8vw;
+  position: relative;
+  bottom: 4vh;
+  right: 0;
   background-color: $color-body;
   clip-path: polygon(33% 3%, 49% 82%, 74% 2%, 83% 71%, 100% 0, 100% 0, 100% 100%, 0 100%, 0 0, 12% 76%);
-
-  @media only screen and (min-width: 2000px) {
-    margin-top: -11rem;
-  }
 
   @media only screen and (max-width: 320px) {
     display: none;
@@ -53,7 +50,6 @@ header {
 }
 
 .logo {
-  // background-color: red;
   @include flex-col-center();
   >img {
     margin-top: 4rem;
@@ -66,7 +62,6 @@ nav {
   width: 30rem;
   font-size: $nav-font-size;
   font-weight: 300;
-  // position: fixed;
   
   @media only screen and (max-width: 320px) {
     width: 20rem;
@@ -98,41 +93,17 @@ nav {
 }
 
 .landing {
-  height: 90vh;
-  margin-top: 2rem;
-  // background-color: lightblue;
+  height: 80vh;
+  position: relative;
   @include flex-col-center();
 }
 
 .landing-container {
-  // background-color: rgb(13, 59, 75);
   @include section-container();
   @media only screen and (max-width: 1300px) {
     width: 100%;
   }
 
-  >.image {
-    // background-color: lightcoral;
-    @include flex-col-center();
-    flex: 1;
-
-    @media only screen and (max-width: 583px) {
-      display: none;
-    }
-
-    >.img-border {
-      width: auto;
-      // background-color: black;
-      @include flex-col-center();
-      position: relative;
-      margin-top: -10rem;
-    }
-
-    >.img-border >img {
-      height: 100%;
-      width: 100%;
-    }
-  }
 
   >.heading{
     @include flex-col-center();
@@ -142,7 +113,7 @@ nav {
     >.heading-container{
       @include flex-col-center();
       width: 100%;
-      margin-top: 15rem;
+      padding: 15rem 0 15rem 0;
 
       >h1 {
         font-family: 'Prata', serif;

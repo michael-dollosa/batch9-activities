@@ -1,0 +1,112 @@
+.video {
+  background-color: #f5f5f5;
+  margin-top: 10rem;
+  width: 100%;
+  // height: auto;
+  @media only screen and (max-width: 320px) {
+    margin-top: 8rem;
+  }
+  >.video-container {
+    // background-color: violet;
+    padding: 10rem 0 20rem 0;
+    @include flex-col-center();
+
+    @media only screen and (max-width: 840px) {
+      padding: 5rem 0 10rem 0;
+    }
+
+    @media only screen and (max-width: 320px) {
+      padding: 2.5rem 0 8rem 0;
+    }
+
+    .content-container {
+      // background-color: blue;
+      @include flex-col-center();
+      align-self: flex-start;
+      flex: 1;
+      padding-left: 10%;
+      position: relative;
+  
+      @media only screen and (max-width: 840px) {
+        margin-bottom: 0;
+        padding-left: 0;
+      }
+
+      >.content-container-sub {
+        @media only screen and (max-width: 840px) {
+          width: 80%;
+        }
+      }
+      >.content-container-sub >p {
+        padding-right: 10%;
+      }
+      >.content-container-sub >h2 {
+        font-family: 'Prata', serif;
+        font-size: $heading-font-size-body;
+        font-weight: 100;
+        letter-spacing: .2rem;
+        padding-bottom: 3rem;
+  
+        @media only screen and (max-width: 1066px) {
+          font-size: 3rem;
+        }
+  
+        @media only screen and (max-width: 840px) {
+          font-size: 2rem;
+          
+        }
+  
+        @media only screen and (max-width: 320px) {
+          font-size: 1.7rem;
+        }
+      }
+  
+      >.content-container-sub >h2::after {
+          content: '';
+          display: block;
+          width: 10%;
+          padding-top: 2rem;
+          border-bottom: 2px solid $color-primary-brown;
+  
+          @media only screen and (max-width: 680px) {
+            width: 40%;
+          }
+      }
+    }
+
+    .video-source {
+      // background-color: red;
+      width: 70rem;
+      height: 45rem;
+      @media only screen and (max-width: 840px) {
+        width: 80%;
+        height: 30rem;
+      }
+
+      @media only screen and (max-width: 650px) {
+        width: 60%;
+        height: 17rem;
+      }
+
+      @media only screen and (max-width: 400px) {
+        width: 90%;
+        height: 17rem;
+      }
+
+      // @media only screen and (max-width: 320px) {
+      //   height: 20rem;
+      // }
+      >video {
+        margin-top: 8rem;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+
+      @media only screen and (max-width: 320px) {
+        margin-top: 3rem;
+      }
+      }
+    }
+
+  }
+}
