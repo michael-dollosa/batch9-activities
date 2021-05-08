@@ -21,9 +21,24 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-#survey-body {
-  background-color: #a67a5e8c;
+#survey-body{
+  position: relative;
+  // background-color: #a67a5e8c;
+
+  &::before {
+    // z-index: 20;
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-image: url("../assets/survey-bg.jpeg");
+    background-size: cover;
+    opacity: .5;
+  }
 }
+
 .container-main {
   min-width: 1200px;
   max-width: 1200px;
@@ -347,9 +362,10 @@ input[type=submit] {
   }
 }
 
+
 @media only screen and (min-width: 2560px) {
   .container-main {
-    height: 65%;
+    height: 50%;
   }
   .container-img {
     height: 100%;

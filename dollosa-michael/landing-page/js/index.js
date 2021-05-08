@@ -5,8 +5,8 @@ const modalMsg = document.querySelector("#modal-message")
 
 submit.addEventListener('submit', e => {
   let inputEmail = document.querySelector("#email").value
-  console.log(inputEmail)
-  console.log(modalMsg.innerHTML)
+  // console.log(inputEmail)
+  // console.log(modalMsg.innerHTML)
   modalMsg.innerHTML = `Thank you for subscribing to our newsletter. Kindly check your email <strong> ${inputEmail} </strong> for further updates.`
   modal.removeAttribute("id")
   submit.reset()
