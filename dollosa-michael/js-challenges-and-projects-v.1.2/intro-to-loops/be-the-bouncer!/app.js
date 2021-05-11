@@ -24,3 +24,14 @@ const nightClubRegister = [
         gender: 'male'
     }
 ]
+
+
+for(let x = 0; x < nightClubRegister.length; x++) {
+    let prefix = "Mr."
+    let name = nightClubRegister[x].lastname
+    let age = nightClubRegister[x].age
+    if(nightClubRegister[x].gender === "female") {
+        prefix = "Mrs."
+    }
+    age > 18 ? console.log(`Hi ${prefix} ${name}, Pasok`) : console.log(`Hi ${prefix} ${name}, Bawal`)
+}
