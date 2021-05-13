@@ -18,3 +18,28 @@ modalBtn.addEventListener('click', e => {
   modal.id = "modal"
 });
 
+
+
+// // Activity
+// // With this quick review on the DOM, try it out on the Product Landing Page you just made!
+// // Try the following:
+// // Connect your page to a JS file using the script tag.
+// // Select a single element.
+// // Select multiple elements.
+// // Modify your element's text.
+// // Modify your element's styles.
+// // Add a button and event listener for button clicks. 
+// // Create a counter application.
+// const multElements = document.getElementsByTagName("p");
+// const button = document.querySelector("#submit")
+// console.log(multElements)
+// multElements[1].innerHTML = "Modified by Javascript"
+// multElements[2].style.backgroundColor = "red";
+// let counter = 0;
+// const counterFn = () => {
+//   counter++
+//   for(let x = 0; x < 8; x++)
+//   multElements[x].innerHTML = `${counter}`
+// }
+// button.addEventListener('click', counterFn)
+

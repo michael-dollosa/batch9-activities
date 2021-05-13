@@ -1,7 +1,7 @@
-function sendText( ) {
-    //Write your code here.
+function sendText(fn, ln) {
+    console.log(`hoy ${fn} ${ln}, walang pasok!`)
 }
-sendText()
+// sendText()
 
 
 sendText('Jose', 'Rizal')
