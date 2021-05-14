@@ -1,0 +1,135 @@
+/* browser reset */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;  /* for all elements to inherit box-sizing attribute in body element css */
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px; 10px/16px = 62.5% -- 16px is default font size in browser*/
+    scroll-behavior: smooth;
+}
+
+input:focus {
+  outline: none !important;
+}
+
+input[type="submit"] {
+  display: none;
+}
+
+input[type="text"] {
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+//variables
+$font-size-time: 17rem;
+$font-size-header: 4rem;
+$font-size-header-small: 2.5rem;
+$font-size-quote: 1.8rem;
+//mixins
+@mixin flex-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.diplay-none {
+  display: none !important;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top:0;
+  right:0;
+  height: 100vh;
+  width: 100%;
+  background-image: url(../assets/bg.jpeg);
+  background-size: cover;
+  filter: opacity(.5);
+  z-index: -10;
+}
+
+
+.container-main {
+  height: 100%;
+  width: 70vw;
+  margin: 0 auto;
+  background-color: rgba(255, 0, 0, 0.315);
+  @include flex-col-center();
+}
+
+.container-header {
+  flex:2;
+  // background-color: blue;
+  @include flex-col-center();
+  padding-top: 10%;
+  justify-content: flex-start;
+}
+
+.time{
+  >h1 {
+    font-size: $font-size-time;
+  }
+}
+
+.container-name{
+  >.inputName {
+    display: none !important;
+    @include flex-col-center();
+    text-align: center;
+  }
+
+  >.greetings{
+    padding-top: 5rem;
+    >h1 {
+      font-size: $font-size-header;
+      font-weight: 500;
+    }
+  }
+
+  >.container-focus {
+    padding-top: 10rem;
+    @include flex-col-center();
+    text-align: center;
+  }
+}
+
+#nameForm {
+  >h1 {
+    font-size: $font-size-header;
+  }
+  >input {
+    padding-top: 2rem;
+  }
+}
+
+#focusForm {
+  >h1 {
+    font-size: $font-size-header-small;
+    font-weight: 300;
+  }
+  >input {
+    padding-top: 2rem;
+  }
+}
+
+.container-quotes {
+  padding-bottom: 5rem;
+  >p{
+    font-size: $font-size-quote;
+    font-weight: 100;
+  }
+}
