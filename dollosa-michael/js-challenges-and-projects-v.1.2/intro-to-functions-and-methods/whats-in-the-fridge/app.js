@@ -30,7 +30,7 @@ upButton.addEventListener('click', moveUp)
 
 function moveDown(){
     if(buyList.length > 0) {
-        fridge.push(buyList.pop())
+        fridge.unshift(buyList.pop())
         displayItem()
     }
 }
