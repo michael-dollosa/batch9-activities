@@ -17,8 +17,10 @@ fridge.push(buyList.shift())
 //and put it in the buyList, on the press of the moveUp button.
 
 function moveUp(){
-    buyList.push(fridge.pop())
-    displayItem()
+    if(fridge.length > 0) {
+        buyList.push(fridge.pop())
+        displayItem()
+    }
 }
 
 upButton.addEventListener('click', moveUp)
@@ -27,8 +29,10 @@ upButton.addEventListener('click', moveUp)
 //and put it in the fridge.
 
 function moveDown(){
-    fridge.push(buyList.pop())
-    displayItem()
+    if(buyList.length > 0) {
+        fridge.push(buyList.pop())
+        displayItem()
+    }
 }
 
 function displayItem() {
