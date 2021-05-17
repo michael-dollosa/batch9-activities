@@ -36,7 +36,8 @@ body {
 $font-size-time: 17rem;
 $font-size-header: 4rem;
 $font-size-header-small: 2.5rem;
-$font-size-quote: 1.8rem;
+$font-size-quote: 1.5rem;
+$font-size-quote-option: 1.2rem;
 //mixins
 @mixin flex-col-center {
   display: flex;
@@ -45,8 +46,23 @@ $font-size-quote: 1.8rem;
   align-items: center;
 }
 
+
+//general
 .diplay-none {
   display: none !important;
+}
+
+.linethrough{
+  text-decoration: line-through;
+  color: #585858;
+}
+
+*[contenteditable="true"] {
+  outline: 1px solid #b6b6b6;
+}
+
+.iconColorChange{
+  color: #585858 !important;
 }
 
 .container::before {
@@ -56,9 +72,9 @@ $font-size-quote: 1.8rem;
   right:0;
   height: 100vh;
   width: 100%;
-  background-image: url(../assets/bg.jpeg);
+  background-image: url(../assets/bg2.jpeg);
   background-size: cover;
-  filter: opacity(.5);
+  filter: opacity(.3);
   z-index: -10;
 }
 
@@ -67,7 +83,7 @@ $font-size-quote: 1.8rem;
   height: 100%;
   width: 70vw;
   margin: 0 auto;
-  background-color: rgba(255, 0, 0, 0.315);
+  // background-color: rgba(255, 0, 0, 0.315);
   @include flex-col-center();
 }
 
@@ -82,17 +98,20 @@ $font-size-quote: 1.8rem;
 .time{
   >h1 {
     font-size: $font-size-time;
+    font-family: 'Chakra Petch', sans-serif;
   }
 }
 
 .container-name{
+  text-align: center;
   >.inputName {
-    display: none !important;
+    // display: none;
     @include flex-col-center();
     text-align: center;
   }
 
   >.greetings{
+    // display: none;
     padding-top: 5rem;
     >h1 {
       font-size: $font-size-header;
@@ -100,10 +119,36 @@ $font-size-quote: 1.8rem;
     }
   }
 
-  >.container-focus {
+  >.container-focus:hover{
+    .focus-option{
+      // display: none;
+      animation-name: slowTransition;
+      animation-duration: .3s;
+      animation-timing-function: ease-out;
+    }
+  }
+  >.container-focus{
+    width: 100%;
     padding-top: 10rem;
     @include flex-col-center();
+    flex-direction: column-reverse;
     text-align: center;
+    
+    >h1{
+      width: 70%;
+      font-size: $font-size-header-small;
+      font-weight: 300;
+    }
+
+    >.focus-option{
+      visibility: hidden;
+      >.focus-option-modify{
+        margin-top: 1rem;
+        font-size: $font-size-quote-option;
+        font-weight: 300;
+        cursor: pointer;
+      }
+    }
   }
 }
 
@@ -117,6 +162,7 @@ $font-size-quote: 1.8rem;
 }
 
 #focusForm {
+  display: none;
   >h1 {
     font-size: $font-size-header-small;
     font-weight: 300;
@@ -126,10 +172,186 @@ $font-size-quote: 1.8rem;
   }
 }
 
-.container-quotes {
+.container-quotes{
+  // background-color: red;
   padding-bottom: 5rem;
+  @include flex-col-center();
+  flex-direction: column-reverse;
+  text-align: center;
+  transition: .2s ease-in;
+
+  &:hover .quotes-option-container{
+    animation-name: slowTransition;
+    animation-duration: .3s;
+    animation-timing-function: ease-out;
+  }
   >p{
     font-size: $font-size-quote;
     font-weight: 100;
+  }
+  .quotes-option-container{
+    // visibility: hidden;
+    margin-top: 1rem;
+
+    >* {
+      // background-color: blue;
+      display: flex;
+      align-items: center;
+      justify-self: center;
+      
+      >p{
+        font-size: $font-size-quote-option;
+        font-weight: 300;
+        cursor: pointer;
+      }
+      >p:not(:last-child){
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+//todo
+
+.todo-toggle{
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: $font-size-quote;
+  padding: .7rem 1rem .7rem 1rem;
+  border: 1px solid #646464;
+  cursor: pointer;
+}
+
+.container-todo::-webkit-scrollbar {
+  display: none;
+}
+
+.container-todo{
+  display: none;
+  background-color: white;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border-radius: 5px;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  animation-name: slowTransitionLeft;
+  animation-duration: .3s;
+  animation-timing-function: ease-out;
+  >.todo-exit{
+    position: relative;
+    >#todo-text-exit{
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: $font-size-quote;
+      padding: 1rem;
+      cursor: pointer;
+    }
+  }
+  >.container-todo-main{
+    padding: 2rem;
+    width: 35rem;
+    @include flex-col-center();
+    align-items: flex-start;
+    
+    .todo-form{
+      width: 95%;
+      padding: 1rem 0 2rem 0;
+      >form >input{
+        font-family: inherit;
+        font-size: $font-size-quote;
+        font-weight: 100;
+        padding: .5rem
+      }
+    }
+    >h3{
+      font-size: $font-size-header-small;
+      font-weight: 300;
+      margin-bottom: 3rem;
+    }
+    >ul{
+      width: 100%;
+      list-style-type: none;
+      >li{
+        >.todo-item{
+          border: .5px solid rgb(121, 121, 121);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-family: inherit;
+          font-weight: 200;
+          font-size: $font-size-quote;
+          padding: 1.5rem;
+          margin-bottom: 1rem;
+          >p{
+            flex: 3;
+          }
+          >.todo-icons{
+            flex: 1;
+            >span{
+              padding: 0 1rem 0 1rem;
+              cursor: pointer;
+            // margin: 1rem;
+            }
+
+            >.completed{
+              color: #3bdb3b;
+            }
+            >.delete{
+              color: #e63535;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  
+}
+
+
+/* animations */
+@keyframes slowTransition {
+  /* start of animation */
+  0% {
+      opacity: 0;
+      transform: translateY(-1rem);
+      // visibility: hidden;
+  }
+
+  80% {
+      opacity: 0.6;
+      visibility: visible;
+  }
+
+  /* end of animation */
+  100% {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+  }
+}
+
+@keyframes slowTransitionLeft {
+  /* start of animation */
+  0% {
+      opacity: 0;
+      transform: translateX(1rem);
+      // visibility: hidden;
+  }
+
+  80% {
+      opacity: 0.6;
+      visibility: visible;
+  }
+
+  /* end of animation */
+  100% {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
   }
 }
