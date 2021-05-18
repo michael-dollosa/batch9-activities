@@ -1,4 +1,4 @@
-import { getTime, getQuote } from './service.js'
+import { getTime, getQuote, capitalizeSentence } from './service.js'
 
 //set object state
 let state = {
@@ -43,6 +43,7 @@ document.addEventListener("click", event => {
   let modifyName = document.querySelector(".greetings").getElementsByTagName("h1")[0].getElementsByTagName("span")
   let nameBlock = modifyName[0].contains(event.target)
   //if outside greeting block
+
   if(!nameBlock){
     modifyName[0].style.outline = "none"
   }
@@ -62,19 +63,6 @@ document.addEventListener("click", event => {
   }
 })
 
-//date/time logic
-const setTime = document.querySelector(".time")
-const time = getTime()
-const appendTime = document.createElement("h1")
-setTime.append(appendTime)
-appendTime.innerHTML = time
-
-//get quote
-const setQuote = document.querySelector(".container-quotes")
-const appendQuote = document.createElement("p")
-setQuote.append(appendQuote)
-const quote = await getQuote()
-appendQuote.innerHTML = `"<span>${quote.compliment}</span>"`
 
 //input name logic
 const inputNameForm = document.querySelector("#nameForm")
@@ -176,7 +164,7 @@ const createFocus = () => {
 const displayFocus = () => {
   focusForm.style.display = "none"
   setFocus.append(setFocusName)
-  setFocusName.innerHTML = `Main Focus for today: <strong><span>${state.focus}</span></strong>`
+  setFocusName.innerHTML = `Main Focus for today<br> <strong><span>${state.focus}</span></strong>`
   AddEventListenerToFocus()
 }
 
@@ -200,7 +188,7 @@ quotesContainer.addEventListener("mouseout", () => {
 quotesOptionGenerate.addEventListener("click", async() => {
   const quote = await getQuote()
   let innerQuote = setQuote.getElementsByTagName("p")
-  innerQuote[2].innerHTML = `"<span>${quote.compliment}</span>"`
+  innerQuote[2].innerHTML = `"<span>${capitalizeSentence(quote.compliment)}</span>"`
 })
 
 //create quote listener
@@ -333,8 +321,25 @@ const onloadWithUser = () => {
 
 //main
 
+
 //load state upon render
 loadState()
+
+
+//date/time logic
+const setTime = document.querySelector(".time")
+const time = getTime()
+const appendTime = document.createElement("h1")
+setTime.append(appendTime)
+appendTime.innerHTML = time
+
+
+//get quote
+const setQuote = document.querySelector(".container-quotes")
+const appendQuote = document.createElement("p")
+setQuote.append(appendQuote)
+const quote = await getQuote()
+appendQuote.innerHTML = `"<span>${capitalizeSentence(quote.compliment)}</span>"`
 
 //set container to hidden
 quotesIcon.style.visibility = "hidden"

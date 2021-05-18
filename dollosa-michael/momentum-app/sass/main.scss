@@ -72,7 +72,7 @@ body {
 }
 
 .iconColorChange{
-  color: #585858 !important;
+  color: #3bdb3b !important;
 }
 
 .container::before {
@@ -86,6 +86,10 @@ body {
   background-size: cover;
   filter: opacity(.3);
   z-index: -10;
+
+  @media only screen and (max-width: 500px) {
+    background-image: url(../assets/bg2-portrait.jpg);
+  }
 }
 
 
@@ -136,6 +140,9 @@ body {
     >h1 {
       font-size: $font-size-header;
       font-weight: 500;
+      animation-name: slowTransition;
+      animation-duration: .3s;
+      animation-timing-function: ease-out;
       @media only screen and (max-width: 500px) {
         font-size: 3rem;
       }
@@ -165,6 +172,9 @@ body {
       width: 70%;
       font-size: $font-size-header-small;
       font-weight: 300;
+      animation-name: slowTransition;
+      animation-duration: .3s;
+      animation-timing-function: ease-out;
       @media only screen and (max-width: 500px) {
         font-size: 2rem;
       }
@@ -262,13 +272,13 @@ body {
   top: 2rem;
   right: 2rem;
   font-size: $font-size-quote;
-  padding: .7rem 1rem .7rem 1rem;
-  border: 1px solid #646464;
+  padding: 1rem;
+  border: 1px solid transparent;
   cursor: pointer;
   transition: .2s;
   &:hover{
-    background-color: white;
-    // border: 1px solid tran;
+    border: 1px solid #646464;
+    border-radius: 50%;
   }
 }
 
@@ -375,7 +385,8 @@ body {
             }
 
             >.completed{
-              color: #3bdb3b;
+              // color: #3bdb3b;
+              color: #585858;
             }
             >.delete{
               color: #e63535;
@@ -385,8 +396,6 @@ body {
       }
     }
   }
-
-  
 }
 
 
@@ -397,13 +406,13 @@ body {
   top: 2rem;
   left: 2rem;
   font-size: $font-size-quote;
-  padding: .7rem 1rem .7rem 1rem;
-  border: 1px solid #646464;
+  padding: 1rem;
+  border: 1px solid transparent;
   cursor: pointer;
   transition: .2s;
   &:hover{
-    background-color: white;
-    // border: 1px solid tran;
+    border: 1px solid #646464;
+    border-radius: 50%;
   }
 }
 
