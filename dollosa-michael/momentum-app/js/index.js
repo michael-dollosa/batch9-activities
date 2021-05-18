@@ -40,7 +40,12 @@ document.addEventListener("click", event => {
   let insideQuoteBlock = quotesContainer.contains(event.target)
   let focusBlock = focusContainer.contains(event.target)
   let focusInput = focusContainer.getElementsByTagName("h1")[1]
-
+  let modifyName = document.querySelector(".greetings").getElementsByTagName("h1")[0].getElementsByTagName("span")
+  let nameBlock = modifyName[0].contains(event.target)
+  //if outside greeting block
+  if(!nameBlock){
+    modifyName[0].style.outline = "none"
+  }
   //if user clicks outside quote div, it should reset to default style
   if(!insideQuoteBlock){
     let innerQuote = setQuote.getElementsByTagName("p")
@@ -94,8 +99,23 @@ const setGreetingName = document.createElement("h1")
 const createGreeting = () => {
   inputNameForm.style.display = "none"
   setGreetings.append(setGreetingName)
-  setGreetingName.innerHTML = `Hi <span>${state.name}</span>, have a great day!`
+  setGreetingName.innerHTML = `Hi <span contenteditable=true>${state.name}</span>, have a great day!`
   setGreetings.style.display = "block"
+
+  let modifyName = setGreetingName.getElementsByTagName("span")
+  modifyName[0].addEventListener("click", () => {
+    modifyName[0].style.outline = "1px solid #b6b6b6"
+  })
+  modifyName[0].addEventListener("keydown", e => {
+    if (e.which === 13) {
+      modifyName[0].blur()
+      modifyName[0].style.outline = "none"
+      state.name = modifyName[0].innerHTML
+      saveState()
+      console.log(state.name)
+      return false;
+    }
+  })
 }
 
 //input focus logic

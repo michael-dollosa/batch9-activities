@@ -1,3 +1,11 @@
+
+//variables
+$font-size-time: 17rem;
+$font-size-header: 4rem;
+$font-size-header-small: 2.5rem;
+$font-size-quote: 1.5rem;
+$font-size-quote-option: 1.2rem;
+
 /* browser reset */
 *,
 *::after,
@@ -22,22 +30,22 @@ input[type="submit"] {
 
 input[type="text"] {
   font-family: inherit;
+  font-size: $font-size-header-small;
   background-color: transparent;
   border: none;
   width: 100%;
   border-bottom: 1px solid black;
+  @media only screen and (max-width: 320px) {
+    font-size: 2rem;
+  }
+
+
 }
 
 body {
   font-family: 'Roboto', sans-serif;
 }
 
-//variables
-$font-size-time: 17rem;
-$font-size-header: 4rem;
-$font-size-header-small: 2.5rem;
-$font-size-quote: 1.5rem;
-$font-size-quote-option: 1.2rem;
 //mixins
 
 @mixin flex-col-center {
@@ -123,12 +131,17 @@ $font-size-quote-option: 1.2rem;
 
   >.greetings{
     // display: none;
+    
     padding-top: 5rem;
     >h1 {
       font-size: $font-size-header;
       font-weight: 500;
       @media only screen and (max-width: 500px) {
         font-size: 3rem;
+      }
+
+      >span{
+        outline: transparent;
       }
     }
   }
@@ -173,6 +186,9 @@ $font-size-quote-option: 1.2rem;
   display: none;
   >h1 {
     font-size: $font-size-header;
+    @media only screen and (max-width: 500px) {
+      font-size: 3rem;
+    }
   }
   >input {
     padding-top: 2rem;
