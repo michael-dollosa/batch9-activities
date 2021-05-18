@@ -1,19 +1,18 @@
 import { getTime, getQuote } from './service.js'
 
-//set object state
 let state = {
   name: "",
   focus: "",
   todo: []
 }
 
-//storage logic
 const saveState = () => {
   localStorage.setItem("data", JSON.stringify(state))
 }
-
+// saveState()
 const loadState = () => {
   let retrievedData = localStorage.getItem("data")
+  console.log(JSON.parse(retrievedData))
   if(!retrievedData) {
     saveState()
     location.reload()
@@ -21,7 +20,6 @@ const loadState = () => {
   state = JSON.parse(retrievedData)
 }
 
-//reset button for testing and presentation
 const resetBtn = document.querySelector(".reset-data")
 resetBtn.addEventListener("click", () => {
   state = {
@@ -45,6 +43,7 @@ document.addEventListener("click", event => {
   if(!insideQuoteBlock){
     let innerQuote = setQuote.getElementsByTagName("p")
     let quote = innerQuote[2].getElementsByTagName("span")
+    console.log("clicked outside quote block")
     quote[0].setAttribute("contenteditable", "false")
     quotesIcon.style.visibility = "hidden"
   }
@@ -52,6 +51,7 @@ document.addEventListener("click", event => {
   //if user clicks outside focus div, it should reset to default style
   if(!focusBlock && focusInput) {
     let focusInputElement = focusContainer.getElementsByTagName("h1")[1].getElementsByTagName("span")[0]
+    console.log(focusInputElement)
     focusInputElement.setAttribute("contenteditable", "false")
     focusOption.style.visibility = "hidden"
   }
@@ -60,6 +60,7 @@ document.addEventListener("click", event => {
 //date/time logic
 const setTime = document.querySelector(".time")
 const time = getTime()
+console.log(time)
 const appendTime = document.createElement("h1")
 setTime.append(appendTime)
 appendTime.innerHTML = time
@@ -69,6 +70,7 @@ const setQuote = document.querySelector(".container-quotes")
 const appendQuote = document.createElement("p")
 setQuote.append(appendQuote)
 const quote = await getQuote()
+console.log(quote.compliment)
 appendQuote.innerHTML = `"<span>${quote.compliment}</span>"`
 
 //input name logic
@@ -103,14 +105,12 @@ const focusForm = document.querySelector("#focusForm")
 const focusContainer = document.querySelector(".container-focus")
 const focusOption = document.querySelector(".focus-option")
 const modifyFocus = document.querySelector(".focus-option-modify")
-const setFocus = document.querySelector(".container-focus")
-const setFocusName = document.createElement("h1")
 
 //event listener function to be used once user already inputted a focus for the day
 const AddEventListenerToFocus = () => {
   focusOption.style.display = "block"
   focusContainer.addEventListener("mouseover", () => {
-  focusOption.style.visibility = "visible"
+    focusOption.style.visibility = "visible"
   })
   focusContainer.addEventListener("mouseout", () => {
     let focusInput = focusContainer.getElementsByTagName("h1")[1].getElementsByTagName("span")[0]
@@ -119,29 +119,24 @@ const AddEventListenerToFocus = () => {
   })
 }
 
-//modify Focus listener
 modifyFocus.addEventListener("click", () => {
   let focusInput = focusContainer.getElementsByTagName("h1")[1].getElementsByTagName("span")[0]
   focusInput.setAttribute("contenteditable", "true")
+
   focusInput.focus()
+
   focusInput.addEventListener("keydown", e => {
     if (e.which === 13) {
       focusInput.setAttribute("contenteditable", "false")
       focusInput.blur()
       focusOption.style.visibility = "hidden"
-      state.focus = focusInput.innerHTML
-      saveState()
       return false;
     }
   })
 })
 
-//create focus fn
 const createFocus = () => {
-  //show focusForm
   focusForm.style.display = "block"
-
-  //focusForm listener
   focusForm.addEventListener("submit", event => {
     event.preventDefault()
     state.focus = document.querySelector("#focusName").value
@@ -155,16 +150,25 @@ const createFocus = () => {
 
 const displayFocus = () => {
   focusForm.style.display = "none"
+  const setFocus = document.querySelector(".container-focus")
+  const setFocusName = document.createElement("h1")
   setFocus.append(setFocusName)
   setFocusName.innerHTML = `Main Focus for today: <strong><span>${state.focus}</span></strong>`
   AddEventListenerToFocus()
 }
+
+console.log(state.focus)
+//set quotes option if quotes is focused
+
 
 //quotes logic
 const quotesContainer = document.querySelector(".container-quotes")
 const quotesIcon = document.querySelector(".quotes-option-container")
 const quotesOptionGenerate = document.querySelector(".quote-option-generate")
 const quotesOptionCreate = document.querySelector(".quote-option-create")
+
+//set container to hidden
+quotesIcon.style.visibility = "hidden"
 
 quotesContainer.addEventListener("mouseover", () => {
   quotesIcon.style.visibility = "visible"
@@ -176,21 +180,22 @@ quotesContainer.addEventListener("mouseout", () => {
   quote[0] === document.activeElement ? quotesIcon.style.visibility = "visible" : quotesIcon.style.visibility = "hidden"
 })
 
-//async quotes generation listener
 quotesOptionGenerate.addEventListener("click", async() => {
   const quote = await getQuote()
+  console.log(quote.compliment)
   let innerQuote = setQuote.getElementsByTagName("p")
   innerQuote[2].innerHTML = `"<span>${quote.compliment}</span>"`
 })
 
-//create quote listener
 quotesOptionCreate.addEventListener("click", () => {
   let innerQuote = setQuote.getElementsByTagName("p")
   let quote = innerQuote[2].getElementsByTagName("span")
   quote[0].setAttribute("contenteditable", "true")
   quote[0].focus()
+  console.log("check for focus bool", document.activeElement)
 
   quote[0].addEventListener("keydown", e => {
+    console.log(e.which)
     if (e.which === 13) {
       quote[0].setAttribute("contenteditable", "false")
       quote[0].blur()
@@ -198,6 +203,7 @@ quotesOptionCreate.addEventListener("click", () => {
       return false;
     }
   })
+  console.log(quote[0])
 })
 
 //logic for todo
@@ -274,6 +280,8 @@ const createTodoList = (data) => {
     //capture item string in element
     let itemDelete = item.textContent
 
+    console.log("current state", state.todo)
+    console.log("itemDelete", itemDelete)
     //use filter to remove matches from array
     let arrFilter = state.todo.filter((data) => {
       return data["todo"] !== itemDelete
@@ -292,10 +300,10 @@ const createTodoList = (data) => {
 
     //savestate
     saveState()
+    console.log(arrFilter)
   })
 }
 
-//fn for rerendering todolist
 const displayTodoList = () => {
   state.todo.forEach( item => createTodoList(item) )
 }
@@ -312,12 +320,8 @@ const onloadWithUser = () => {
 
 
 //main
-
 //load state upon render
 loadState()
-
-//set container to hidden
-quotesIcon.style.visibility = "hidden"
 
 //set input if no name in state
 if(!state.name) {
