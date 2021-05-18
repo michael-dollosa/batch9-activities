@@ -10,13 +10,28 @@ const saveState = () => {
   localStorage.setItem("data", JSON.stringify(state))
 }
 // saveState()
-
 const loadState = () => {
   let retrievedData = localStorage.getItem("data")
   console.log(JSON.parse(retrievedData))
+  if(!retrievedData) {
+    saveState()
+    location.reload()
+  }
   state = JSON.parse(retrievedData)
 }
-loadState()
+
+const resetBtn = document.querySelector(".reset-data")
+resetBtn.addEventListener("click", () => {
+  state = {
+    name: "",
+    focus: "",
+    todo: []
+  }
+  saveState()
+
+  //rerender page
+  location.reload();
+})
 
 //general event (event bubble)
 document.addEventListener("click", event => {
@@ -61,17 +76,17 @@ appendQuote.innerHTML = `"<span>${quote.compliment}</span>"`
 //input name logic
 const inputNameForm = document.querySelector("#nameForm")
 const createName = () => {
-  // inputNameForm.style.display = "block !important"
+  inputNameForm.style.display = "block"
   inputNameForm.addEventListener("submit", event => {
     event.preventDefault()
     //read input
     state.name = document.querySelector("#username").value
     saveState()
     inputNameForm.reset()
-    console.log(state.name)
-    //set name in greeting
-    createGreeting()
-    createFocus()
+    
+    //call onload fn to set styles and events
+    onloadWithUser()
+
   })
 }
 
@@ -138,7 +153,7 @@ const displayFocus = () => {
   const setFocus = document.querySelector(".container-focus")
   const setFocusName = document.createElement("h1")
   setFocus.append(setFocusName)
-  setFocusName.innerHTML = `Main Focus for today: <br><span>${state.focus}</span>`
+  setFocusName.innerHTML = `Main Focus for today: <strong><span>${state.focus}</span></strong>`
   AddEventListenerToFocus()
 }
 
@@ -209,6 +224,7 @@ todoToggle.addEventListener("click", () => {
 todoExit.addEventListener("click", () => {
   todoContainer.style.display = "none"
   todoToggleContainer.style.display = "block"
+  
 })
 
 //add submit event listener
@@ -278,21 +294,26 @@ const displayTodoList = () => {
   state.todo.forEach( item => createTodoList(item) )
 }
 
-
-
-
-
-//main
-
-//set input if no name in state
-if(!state.name) {
-  focusForm.style.display = "none"
-  createName()
-} else {
+const onloadWithUser = () => {
+  todoToggle.style.visibility = "visible"
   inputNameForm.style.display = "none"
   displayTodoList()
   createGreeting()
   focusOption.style.display = "none"
   //condition to create or display Focus based on state
-  state.focus === true ? createFocus() : displayFocus()
+  !state.focus ? createFocus() : displayFocus()
+}
+
+
+//main
+//load state upon render
+loadState()
+
+//set input if no name in state
+if(!state.name) {
+  focusForm.style.display = "none"
+  focusOption.style.display = "none"
+  createName()
+} else {
+  onloadWithUser()
 }

@@ -61,6 +61,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center; }
+  @media only screen and (max-width: 500px) {
+    .container-main {
+      width: 90vw; } }
 
 .container-header {
   flex: 2;
@@ -70,10 +73,16 @@ body {
   align-items: center;
   padding-top: 10%;
   justify-content: flex-start; }
+  @media only screen and (max-width: 500px) {
+    .container-header {
+      padding-top: 30%; } }
 
 .time > h1 {
   font-size: 17rem;
   font-family: 'Chakra Petch', sans-serif; }
+  @media only screen and (max-width: 500px) {
+    .time > h1 {
+      font-size: 10rem; } }
 
 .container-name {
   text-align: center; }
@@ -88,6 +97,9 @@ body {
     .container-name > .greetings > h1 {
       font-size: 4rem;
       font-weight: 500; }
+      @media only screen and (max-width: 500px) {
+        .container-name > .greetings > h1 {
+          font-size: 3rem; } }
   .container-name > .container-focus:hover .focus-option {
     animation-name: slowTransition;
     animation-duration: .3s;
@@ -105,6 +117,9 @@ body {
       width: 70%;
       font-size: 2.5rem;
       font-weight: 300; }
+      @media only screen and (max-width: 500px) {
+        .container-name > .container-focus > h1 {
+          font-size: 2rem; } }
     .container-name > .container-focus > .focus-option {
       visibility: hidden; }
       .container-name > .container-focus > .focus-option > .focus-option-modify {
@@ -113,17 +128,21 @@ body {
         font-weight: 300;
         cursor: pointer; }
 
-#nameForm > h1 {
-  font-size: 4rem; }
-
-#nameForm > input {
-  padding-top: 2rem; }
+#nameForm {
+  display: none; }
+  #nameForm > h1 {
+    font-size: 4rem; }
+  #nameForm > input {
+    padding-top: 2rem; }
 
 #focusForm {
   display: none; }
   #focusForm > h1 {
     font-size: 2.5rem;
     font-weight: 300; }
+    @media only screen and (max-width: 500px) {
+      #focusForm > h1 {
+        font-size: 2rem; } }
   #focusForm > input {
     padding-top: 2rem; }
 
@@ -143,7 +162,11 @@ body {
   .container-quotes > p {
     font-size: 1.5rem;
     font-weight: 100; }
+    @media only screen and (max-width: 500px) {
+      .container-quotes > p {
+        font-size: 1.3rem; } }
   .container-quotes .quotes-option-container {
+    visibility: hidden;
     margin-top: 1rem; }
     .container-quotes .quotes-option-container > * {
       display: flex;
@@ -153,17 +176,24 @@ body {
         font-size: 1.2rem;
         font-weight: 300;
         cursor: pointer; }
+        @media only screen and (max-width: 500px) {
+          .container-quotes .quotes-option-container > * > p {
+            font-size: 1rem; } }
       .container-quotes .quotes-option-container > * > p:not(:last-child) {
         margin-right: 1rem; }
 
 .todo-toggle {
+  visibility: hidden;
   position: absolute;
   top: 2rem;
   right: 2rem;
   font-size: 1.5rem;
   padding: .7rem 1rem .7rem 1rem;
   border: 1px solid #646464;
-  cursor: pointer; }
+  cursor: pointer;
+  transition: .2s; }
+  .todo-toggle:hover {
+    background-color: white; }
 
 .container-todo::-webkit-scrollbar {
   display: none; }
@@ -180,6 +210,11 @@ body {
   animation-name: slowTransitionLeft;
   animation-duration: .3s;
   animation-timing-function: ease-out; }
+  @media only screen and (max-width: 442px) {
+    .container-todo {
+      top: 0;
+      right: 0;
+      max-height: 100vh; } }
   .container-todo > .todo-exit {
     position: relative; }
     .container-todo > .todo-exit > #todo-text-exit {
@@ -197,6 +232,12 @@ body {
     justify-content: center;
     align-items: center;
     align-items: flex-start; }
+    @media only screen and (max-width: 500px) {
+      .container-todo > .container-todo-main {
+        width: 87vw; } }
+    @media only screen and (max-width: 442px) {
+      .container-todo > .container-todo-main {
+        width: 90vw; } }
     .container-todo > .container-todo-main .todo-form {
       width: 95%;
       padding: 1rem 0 2rem 0; }
@@ -205,6 +246,9 @@ body {
         font-size: 1.5rem;
         font-weight: 100;
         padding: .5rem; }
+      @media only screen and (max-width: 320px) {
+        .container-todo > .container-todo-main .todo-form {
+          padding: 1rem 0 2rem 0; } }
     .container-todo > .container-todo-main > h3 {
       font-size: 2.5rem;
       font-weight: 300;
@@ -221,7 +265,14 @@ body {
         font-weight: 200;
         font-size: 1.5rem;
         padding: 1.5rem;
-        margin-bottom: 1rem; }
+        margin-bottom: 1rem;
+        animation-name: slowTransition;
+        animation-duration: .3s;
+        animation-timing-function: ease-out; }
+        @media only screen and (max-width: 320px) {
+          .container-todo > .container-todo-main > ul > li > .todo-item {
+            font-size: 1.2rem;
+            padding: 1rem; } }
         .container-todo > .container-todo-main > ul > li > .todo-item > p {
           flex: 3; }
         .container-todo > .container-todo-main > ul > li > .todo-item > .todo-icons {
@@ -233,6 +284,18 @@ body {
             color: #3bdb3b; }
           .container-todo > .container-todo-main > ul > li > .todo-item > .todo-icons > .delete {
             color: #e63535; }
+
+.reset-data {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  font-size: 1.5rem;
+  padding: .7rem 1rem .7rem 1rem;
+  border: 1px solid #646464;
+  cursor: pointer;
+  transition: .2s; }
+  .reset-data:hover {
+    background-color: white; }
 
 /* animations */
 @keyframes slowTransition {

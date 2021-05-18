@@ -39,12 +39,14 @@ $font-size-header-small: 2.5rem;
 $font-size-quote: 1.5rem;
 $font-size-quote-option: 1.2rem;
 //mixins
+
 @mixin flex-col-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 
 
 //general
@@ -85,6 +87,9 @@ $font-size-quote-option: 1.2rem;
   margin: 0 auto;
   // background-color: rgba(255, 0, 0, 0.315);
   @include flex-col-center();
+  @media only screen and (max-width: 500px) {
+    width: 90vw;
+  }
 }
 
 .container-header {
@@ -93,12 +98,18 @@ $font-size-quote-option: 1.2rem;
   @include flex-col-center();
   padding-top: 10%;
   justify-content: flex-start;
+  @media only screen and (max-width: 500px) {
+    padding-top: 30%;
+  }
 }
 
 .time{
   >h1 {
     font-size: $font-size-time;
     font-family: 'Chakra Petch', sans-serif;
+    @media only screen and (max-width: 500px) {
+      font-size: 10rem;
+    }
   }
 }
 
@@ -116,6 +127,9 @@ $font-size-quote-option: 1.2rem;
     >h1 {
       font-size: $font-size-header;
       font-weight: 500;
+      @media only screen and (max-width: 500px) {
+        font-size: 3rem;
+      }
     }
   }
 
@@ -138,6 +152,9 @@ $font-size-quote-option: 1.2rem;
       width: 70%;
       font-size: $font-size-header-small;
       font-weight: 300;
+      @media only screen and (max-width: 500px) {
+        font-size: 2rem;
+      }
     }
 
     >.focus-option{
@@ -153,6 +170,7 @@ $font-size-quote-option: 1.2rem;
 }
 
 #nameForm {
+  display: none;
   >h1 {
     font-size: $font-size-header;
   }
@@ -166,6 +184,9 @@ $font-size-quote-option: 1.2rem;
   >h1 {
     font-size: $font-size-header-small;
     font-weight: 300;
+    @media only screen and (max-width: 500px) {
+      font-size: 2rem;
+    }
   }
   >input {
     padding-top: 2rem;
@@ -188,9 +209,12 @@ $font-size-quote-option: 1.2rem;
   >p{
     font-size: $font-size-quote;
     font-weight: 100;
+    @media only screen and (max-width: 500px) {
+      font-size: 1.3rem;
+    }
   }
   .quotes-option-container{
-    // visibility: hidden;
+    visibility: hidden;
     margin-top: 1rem;
 
     >* {
@@ -203,6 +227,9 @@ $font-size-quote-option: 1.2rem;
         font-size: $font-size-quote-option;
         font-weight: 300;
         cursor: pointer;
+        @media only screen and (max-width: 500px) {
+          font-size: 1rem;
+        }
       }
       >p:not(:last-child){
         margin-right: 1rem;
@@ -214,6 +241,7 @@ $font-size-quote-option: 1.2rem;
 //todo
 
 .todo-toggle{
+  visibility: hidden;
   position: absolute;
   top: 2rem;
   right: 2rem;
@@ -221,6 +249,11 @@ $font-size-quote-option: 1.2rem;
   padding: .7rem 1rem .7rem 1rem;
   border: 1px solid #646464;
   cursor: pointer;
+  transition: .2s;
+  &:hover{
+    background-color: white;
+    // border: 1px solid tran;
+  }
 }
 
 .container-todo::-webkit-scrollbar {
@@ -240,6 +273,12 @@ $font-size-quote-option: 1.2rem;
   animation-name: slowTransitionLeft;
   animation-duration: .3s;
   animation-timing-function: ease-out;
+  
+  @media only screen and (max-width: 442px) {
+    top: 0;
+    right: 0;
+    max-height: 100vh;
+  }
   >.todo-exit{
     position: relative;
     >#todo-text-exit{
@@ -256,8 +295,18 @@ $font-size-quote-option: 1.2rem;
     width: 35rem;
     @include flex-col-center();
     align-items: flex-start;
+    @media only screen and (max-width: 500px) {
+      width: 87vw;
+    }
+    @media only screen and (max-width: 442px) {
+      width: 90vw;
+    }
+    // @media only screen and (max-width: 320px) {
+    //   width: 100%;
+    // }
     
     .todo-form{
+      // background-color: red;
       width: 95%;
       padding: 1rem 0 2rem 0;
       >form >input{
@@ -265,6 +314,10 @@ $font-size-quote-option: 1.2rem;
         font-size: $font-size-quote;
         font-weight: 100;
         padding: .5rem
+      }
+
+      @media only screen and (max-width: 320px) {
+        padding: 1rem 0 2rem 0;
       }
     }
     >h3{
@@ -286,6 +339,14 @@ $font-size-quote-option: 1.2rem;
           font-size: $font-size-quote;
           padding: 1.5rem;
           margin-bottom: 1rem;
+
+          animation-name: slowTransition;
+          animation-duration: .3s;
+          animation-timing-function: ease-out;
+          @media only screen and (max-width: 320px) {
+            font-size: $font-size-quote-option;
+            padding: 1rem;
+          }
           >p{
             flex: 3;
           }
@@ -312,6 +373,23 @@ $font-size-quote-option: 1.2rem;
   
 }
 
+
+//reset btn
+.reset-data{
+  // visibility: hidden;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  font-size: $font-size-quote;
+  padding: .7rem 1rem .7rem 1rem;
+  border: 1px solid #646464;
+  cursor: pointer;
+  transition: .2s;
+  &:hover{
+    background-color: white;
+    // border: 1px solid tran;
+  }
+}
 
 /* animations */
 @keyframes slowTransition {
