@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <title>Momentum App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/index.js" type="module" defer></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="reset-data">
+      <p id="reset-data-btn">Reset</p>
+    </div>
+    <div class="todo-toggle">
+      <p id="todo-text-toggle">Todo</p>
+    </div>
+    <div class="container-todo">
+      <div class="todo-exit">
+        <span id="todo-text-exit">	&#10005;</span>
+      </div>
+      <div class="container-todo-main">
+        <h3>ToDo</h3>
+        <div class="todo-form">
+          <form action="" id="todoForm" autocomplete="off">
+            <input type="text" id="todo-input" placeholder="Place todo here...">
+            <input type="submit">
+          </form>
+        </div>
+        <ul id="todo-list">
+          <!-- todo item
+          <li>
+            <div class="todo-item">
+              <p>To Do List Sample 1</p>
+              <div class="todo-icons">
+                <span class="completed">&#10003;</span>
+                <span class="delete">&#10005;</span>
+              </div>
+            </div>
+          </li> -->
+          
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="container-main">
+        <div class="container-header">
+          <section class="time">
+            <!-- <h1>10:05</h1> -->
+          </section>
+
+          <section class="container-name">
+            
+            <!-- input name -->
+            <div class="inputName">
+              
+              <form action="" id="nameForm" autocomplete="off">
+                <h1>What is your name</h1>
+                <input type="text" id="userName">
+                <input type="submit" value="">
+              </form>
+            </div>
+
+            <div class="greetings">
+              <!-- <h1>Hi Dolee, have a great day!</h1> -->
+            </div>
+
+            <div class="container-focus">
+              <div class="focus-option">
+                <p class="focus-option-modify">Modify focus for today</p>
+              </div>
+              <form action="" id="focusForm" autocomplete="off">
+                <h1>What is your main focus for today</h1>
+                <input type="text" id="focusName">
+                <input type="submit" value="">
+              </form>
+            </div>
+          </section>
+        </div>
+
+        <div class="container-quotes">
+          <!-- <p>"This is a sample quote</p> -->
+          <div class="quotes-option-container">
+            <!-- <p class="quote-option">&#9547;</p> -->
+            <div class="quotes-option-flex">
+              <p class="quote-option-generate">Generate Quote</p>
+              <p class="quote-option-create">Add my own quote</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="container-todo">
+
+      </div> -->
+    </div>
+
+  </body>
+</html>
