@@ -321,18 +321,25 @@ const onloadWithUser = () => {
 
 //main
 
-
 //load state upon render
 loadState()
 
-
 //date/time logic
 const setTime = document.querySelector(".time")
-const time = getTime()
+let time = getTime()
 const appendTime = document.createElement("h1")
 setTime.append(appendTime)
 appendTime.innerHTML = time
-
+const updateTime = () => {
+  let getCurrentTime = setTime.getElementsByTagName("h1")
+  let currentTime = getCurrentTime[0].textContent
+  if(currentTime !== getTime()){
+    getCurrentTime[0].textContent = getTime()
+    // console.log("not equal with current time")
+  }
+}
+updateTime();
+setInterval(updateTime, 1000);
 
 //get quote
 const setQuote = document.querySelector(".container-quotes")
