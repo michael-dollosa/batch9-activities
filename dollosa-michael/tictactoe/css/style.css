@@ -28,4 +28,6 @@ body {
   grid-template-rows: repeat(3, 1fr);
   grid-gap: 15px; }
   .container > div {
-    background-color: white; }
+    text-align: center;
+    background-color: white;
+    font-size: 15vmin; }
