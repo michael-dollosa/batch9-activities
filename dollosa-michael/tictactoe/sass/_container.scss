@@ -1,0 +1,29 @@
+.container{
+  height: 60vmin;
+  width: 60vmin;
+  display: grid;
+  background-color: red;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 15px;
+  >div{
+    // height: 20vmin;
+    // width: 20vmin;
+    background-color: white;
+  }
+  // >div:nth-child(even){
+  //   border: 1px solid black;
+  // }
+  // >div:nth-child(2){
+  //   border-top: transparent;
+  // }
+  // >div:nth-child(4){
+  //   border-left: transparent;
+  // }
+  // >div:nth-child(6){
+  //   border-right: transparent;
+  // }
+  // >div:nth-child(8){
+  //   border-bottom: transparent;
+  // }
+}
