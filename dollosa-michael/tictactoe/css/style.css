@@ -1,0 +1,31 @@
+/* browser reset */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  /* for all elements to inherit box-sizing attribute in body element css */ }
+
+html {
+  font-size: 62.5%;
+  /* 1rem = 10px; 10px/16px = 62.5% -- 16px is default font size in browser*/
+  scroll-behavior: smooth; }
+
+body {
+  width: 100%;
+  box-sizing: border;
+  font-size: 1.6rem;
+  font-weight: 300;
+  background-color: #FDFDFD; }
+
+.container {
+  height: 60vmin;
+  width: 60vmin;
+  display: grid;
+  background-color: red;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 15px; }
+  .container > div {
+    background-color: white; }
