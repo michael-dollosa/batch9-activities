@@ -1,4 +1,4 @@
-export const createGrid = (rows, cols) => {
+const createGrid = (rows, cols) => {
   let gridContainer = document.querySelector("#tictactoe-container")
   let grid = rows*cols
 
@@ -13,13 +13,16 @@ export const createGrid = (rows, cols) => {
   }
 }
 
-export const createGridState = (rows, cols, value = (x, y) => 0) => {
+const createGridState = (rows, cols, value = (x, y) => 0) => {
   let arr = new Array(rows);
   for(let x = 0; x < rows; x++) {
     arr[x] = new Array(cols);
     for(let y = 0; y < cols; y++) {
-      arr[x][y] = value("");
+      arr[x][y] = value(x,y);
+      // `[${x}, ${y}]`
     }
   }
   return arr;
 }
+
+export { createGrid, createGridState }

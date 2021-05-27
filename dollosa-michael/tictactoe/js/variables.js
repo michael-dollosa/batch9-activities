@@ -1,13 +1,30 @@
+
+import { createGridState } from './creation.js'
+
 const rows = 3
 const cols = 3
 let gameHistory = []
-let boardState = [
-  ["", "", ""],
-  ["", "", ""],
-  ["", "", ""]
-]
+let boardState = createGridState(rows, cols, (row, column) => null)
 let counter = 0
 let playerTurn = "X"
+let winner = false
+
+//fn to reset game 
+const gameReset = (cells) => {
+  gameHistory = []
+  boardState = createGridState(rows, cols, (row, column) => null)
+  counter = 0
+  playerTurn = "X"
+  winner = false
+  for(let x = 0; x < rows*cols; x++){
+    cells[x].innerHTML = null
+  }
+}
+
+//fn to update winner flag to true
+const updateWinner = (flag) => {
+  winner = flag
+} 
 
 //fn to update boardState
 const updateBoardState = (row, col, player) => {
@@ -21,19 +38,26 @@ const updateGameHistory = (currentBoardState) => {
     turn: counter,
     boardHistoryState: currentBoardState
   })
-  console.log("history", gameHistory)
-}
-//fn to update counter
-const updateCounter = () => {
-  counter++
-}
-//fn to update playerTurn
-const updatePlayerTurn = (counter) => {
-  if(counter%2 === 0) {
-    playerTurn = "0"
-  } else {
-    playerTurn = "X"
-  }
+  // console.log("history", gameHistory)
 }
 
-export { rows, cols, boardState, counter, playerTurn, updatePlayerTurn, updateCounter, updateBoardState, updateGameHistory, gameHistory }
+//fn to update counter
+const addCounter = () => {
+  counter++
+}
+
+const subtractCounter = () => {
+  counter--
+}
+
+//fn to update playerTurn
+const updatePlayerTurn = () => {
+  playerTurn === "X" ? playerTurn = "O" : playerTurn = "X"
+}
+
+//fn to set playerTurn in intro
+const setPlayer = (player) => {
+  playerTurn = player
+}
+
+export { rows, cols, boardState, counter, playerTurn, updatePlayerTurn, addCounter, subtractCounter, updateBoardState, updateGameHistory, gameHistory, winner, updateWinner, gameReset, setPlayer }

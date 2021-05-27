@@ -1,4 +1,4 @@
-import { boardState, counter, updatePlayerTurn, updateCounter, updateBoardState, updateGameHistory, gameHistory } from './variables.js'
+import { boardState, counter, updatePlayerTurn, addCounter, updateBoardState, updateGameHistory, gameHistory, playerTurn } from './variables.js'
 
 
 const updateGameState = (cell, turn) => {
@@ -11,11 +11,27 @@ const updateGameState = (cell, turn) => {
   let slicedBoardState = boardState.map((arr) => {
     return arr.slice()
   })
-  console.log("mapped", slicedBoardState)
+  // console.log("mapped", slicedBoardState)
   updateGameHistory(slicedBoardState)
-  updatePlayerTurn(counter)
-  updateCounter()
-
+  updatePlayerTurn()
+  addCounter()
 }
 
-export { updateGameState }
+const setVisibility = (element, value) => {
+  element.style.visibility = value
+}
+
+const resetCellColor = (cells, rows, cols) => {
+  let cellNumber = 0
+
+  //iterate all cells
+  for(let row = 0; row < rows; row++){
+    for(let column = 0; column < cols; column++){
+      //set innerHTML value based on value in history
+      cells[cellNumber].classList.remove("pink")
+      cellNumber++
+    }
+  }
+}
+
+export { updateGameState, setVisibility, resetCellColor }

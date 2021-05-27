@@ -15,19 +15,199 @@ html {
 body {
   width: 100%;
   box-sizing: border;
+  font-family: 'Cantarell', sans-serif;
   font-size: 1.6rem;
   font-weight: 300;
   background-color: #FDFDFD; }
 
+button {
+  outline: none;
+  border: none;
+  background-color: none;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.6rem;
+  padding: .5rem 1.5rem .5rem 1.5rem;
+  border-radius: 10rem;
+  box-shadow: 4px 4px 0px #000000; }
+
+.container-background {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  position: relative; }
+  .container-background::after {
+    content: "";
+    z-index: -10;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-image: url("../assets/bg.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8; }
+
+.container-intro {
+  border: 1px solid #ea68a5;
+  padding: 2rem;
+  width: 50vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation-name: slowTransition;
+  animation-duration: .3s;
+  animation-timing-function: ease-out; }
+  .container-intro > .container-symbol {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around; }
+    .container-intro > .container-symbol > .symbol {
+      font-size: 6rem;
+      cursor: pointer; }
+      .container-intro > .container-symbol > .symbol:hover {
+        color: #bb5284; }
+
+.container-parent {
+  display: none; }
+
 .container {
-  height: 60vmin;
-  width: 60vmin;
+  height: 45vmin;
+  width: 45vmin;
   display: grid;
-  background-color: red;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  grid-gap: 15px; }
+  animation-name: slowTransition;
+  animation-duration: .3s;
+  animation-timing-function: ease-out; }
+  @media only screen and (max-width: 320px) {
+    .container {
+      height: 80vmin;
+      width: 80vmin; } }
   .container > div {
-    text-align: center;
-    background-color: white;
-    font-size: 15vmin; }
+    height: calc(45vmin/9vmin);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #550040;
+    font-size: 7vmin; }
+    @media only screen and (max-width: 320px) {
+      .container > div {
+        height: calc(80vmin/9vmin);
+        font-size: 15vmin; } }
+  .container > div:nth-child(1),
+  .container > div:nth-child(2),
+  .container > div:nth-child(3) {
+    border-top: none; }
+  .container > div:nth-child(1),
+  .container > div:nth-child(4),
+  .container > div:nth-child(7) {
+    border-left: none; }
+  .container > div:nth-child(3),
+  .container > div:nth-child(6),
+  .container > div:nth-child(9) {
+    border-right: none; }
+  .container > div:nth-child(7),
+  .container > div:nth-child(8),
+  .container > div:nth-child(9) {
+    border-bottom: none; }
+
+.header {
+  animation-name: slowTransition;
+  animation-duration: .3s;
+  animation-timing-function: ease-out; }
+  .header > h1 {
+    font-size: 6rem;
+    font-weight: 600; }
+    @media only screen and (max-width: 320px) {
+      .header > h1 {
+        text-align: center;
+        font-size: 4rem; } }
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40vmin;
+  animation-name: slowTransition;
+  animation-duration: .3s;
+  animation-timing-function: ease-out; }
+  @media only screen and (max-width: 320px) {
+    .footer {
+      width: 100%; } }
+  .footer > .container-msg {
+    padding-bottom: 5rem;
+    font-family: inherit; }
+    .footer > .container-msg > h6 {
+      font-size: 1.6rem;
+      font-weight: 400; }
+  .footer > .container-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center; }
+
+.msg-header {
+  padding-top: 3rem;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.pink {
+  color: #bb5284; }
+
+.btn-next {
+  background-color: #79CE91; }
+
+.btn-previous {
+  background-color: #ea68a5; }
+
+.btn-reset {
+  background-color: #fff; }
+
+.btn-disabled {
+  background-color: #8E999C; }
+
+/* animations */
+@keyframes slowTransition {
+  /* start of animation */
+  0% {
+    opacity: 0;
+    transform: translateY(-1rem); }
+  80% {
+    opacity: 0.6;
+    visibility: visible; }
+  /* end of animation */
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); } }
+
+@keyframes slowTransitionLeft {
+  /* start of animation */
+  0% {
+    opacity: 0;
+    transform: translateX(1rem); }
+  80% {
+    opacity: 0.6;
+    visibility: visible; }
+  /* end of animation */
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); } }
