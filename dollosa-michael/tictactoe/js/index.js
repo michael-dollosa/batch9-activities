@@ -81,9 +81,7 @@ for(let x = 0; x < rows*cols; x++){
 
       //check winner using returned value of checkBoard fn
       let checkWinner = getWinner(checkBoardData)
-      // console.log("check winner", checkWinner)
-      // console.log(checkWinner[0])
-      console.log("winner check", checkWinner)
+
       //if winner is found
       if(checkWinner.length && checkWinner[0].condition){
         let winnerPlayer = checkWinner[0].player[0]
@@ -101,8 +99,6 @@ for(let x = 0; x < rows*cols; x++){
         console.log("Board State", boardState)
         console.log("Board History", gameHistory)
       }
-
-      
 
       // console.log("winner var", winner)
     }
