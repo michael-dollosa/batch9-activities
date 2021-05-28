@@ -1,0 +1,42 @@
+/* animations */
+@keyframes slowTransition {
+  /* start of animation */
+  0% {
+      opacity: 0;
+      transform: translateY(-1rem);
+      // visibility: hidden;
+  }
+
+  80% {
+      opacity: 0.6;
+      visibility: visible;
+  }
+
+  /* end of animation */
+  100% {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+  }
+}
+
+@keyframes slowTransitionLeft {
+  /* start of animation */
+  0% {
+      opacity: 0;
+      transform: translateX(1rem);
+      // visibility: hidden;
+  }
+
+  80% {
+      opacity: 0.6;
+      visibility: visible;
+  }
+
+  /* end of animation */
+  100% {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+  }
+}

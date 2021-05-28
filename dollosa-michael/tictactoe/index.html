@@ -4,19 +4,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/jpg" href=""/>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cantarell:wght@400;700&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    <script type="module" src="./js/index.js" defer></script>
   </head>
   <body>
+    <div class="container-background">
+      <section class="header">
+        <h1><span class="pink">TIC</span> TAC <span class="pink">TOE</span></h1>
+        <div class="msg-header" id="msg-header">
+          <h1 id="header-label">Player 1 Wins!</h1>
+        </div>
+      </section>
+      <section class=container-intro id="container-intro">
+        <h1>Choose who goes first</h1>
+        <div class="container-symbol">
+          <h1 class="symbol" id="symbol-x">X</h1>
+          <h1 class="symbol" id="symbol-o">O</h1>
+        </div>
+      </section>
+      <div class="container-parent" id="container-parent">
+        <section class="container" id="tictactoe-container">
+          <!-- this is where tictactoe board will be -->
+        </section>
+      </div>
+      
+      <section class="footer">
+        <div class="container-msg">
+          <h6 id="msg-game">Player 1 Turn</h6>
+        </div>
+        <div class="container-btn">
+          <button class="btn-previous" id="btn-previous">PREV</button>
+          <button class="btn-reset" id="btn-reset">RESET</button>
+          <button class="btn-next" id="btn-next">NEXT</button>
+          
+        </div>
+      </section>
+    </div>
     
-    <section class="container">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </section>
   </body>
 </html>
