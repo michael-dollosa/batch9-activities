@@ -107,7 +107,6 @@ const displayHistory = (boardState, cells, rows, cols, counter) => {
 } 
 
 const colorWinningPattern = (winningPattern, cells, rows, cols,) => {
-  console.log(winningPattern[0].coordinates)
   let cellNumber = 0
 
   for(let row = 0; row < rows; row++){
@@ -120,7 +119,7 @@ const colorWinningPattern = (winningPattern, cells, rows, cols,) => {
         let winningCol = winningPattern[0].coordinates[pattern][1]
         //condition if current element coordinate is equal to winning coordinate
         if( (parseInt(cellRow) === winningRow) && (parseInt(cellCol) === winningCol)){
-          console.log(`winnong coordinate [${cellRow},${cellCol}]`)
+          // console.log(`winning coordinate [${cellRow},${cellCol}]`)
           cells[cellNumber].classList.add("pink")
         }
       }

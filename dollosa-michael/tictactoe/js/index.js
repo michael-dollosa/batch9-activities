@@ -83,7 +83,7 @@ for(let x = 0; x < rows*cols; x++){
       let checkWinner = getWinner(checkBoardData)
       // console.log("check winner", checkWinner)
       // console.log(checkWinner[0])
-
+      console.log("winner check", checkWinner)
       //if winner is found
       if(checkWinner.length && checkWinner[0].condition){
         let winnerPlayer = checkWinner[0].player[0]
@@ -95,11 +95,14 @@ for(let x = 0; x < rows*cols; x++){
         console.log("Board History", gameHistory)
       }
 
-      if(counter === rows*cols){
+      //check if counter is at max and no winner detected
+      if(counter === rows*cols && checkWinner.length === 0){
         postGameReview("Draw")
         console.log("Board State", boardState)
         console.log("Board History", gameHistory)
       }
+
+      
 
       // console.log("winner var", winner)
     }
