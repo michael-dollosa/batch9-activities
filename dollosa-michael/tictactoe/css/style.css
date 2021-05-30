@@ -85,8 +85,6 @@ button {
   height: 45vmin;
   width: 45vmin;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
   animation-name: slowTransition;
   animation-duration: .3s;
   animation-timing-function: ease-out; }
@@ -95,34 +93,16 @@ button {
       height: 80vmin;
       width: 80vmin; } }
   .container > div {
-    height: calc(45vmin/9vmin);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 2px solid #550040;
-    font-size: 7vmin;
+    font-size: 5vmin;
     cursor: pointer; }
     @media only screen and (max-width: 320px) {
       .container > div {
-        height: calc(80vmin/9vmin);
-        font-size: 15vmin; } }
-  .container > div:nth-child(1),
-  .container > div:nth-child(2),
-  .container > div:nth-child(3) {
-    border-top: none; }
-  .container > div:nth-child(1),
-  .container > div:nth-child(4),
-  .container > div:nth-child(7) {
-    border-left: none; }
-  .container > div:nth-child(3),
-  .container > div:nth-child(6),
-  .container > div:nth-child(9) {
-    border-right: none; }
-  .container > div:nth-child(7),
-  .container > div:nth-child(8),
-  .container > div:nth-child(9) {
-    border-bottom: none; }
+        font-size: 8vmin; } }
 
 .header {
   animation-name: slowTransition;
