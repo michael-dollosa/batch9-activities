@@ -7,27 +7,27 @@ const createGrid = (rows, cols) => {
   gridContainer.style.gridTemplateRows = `repeat(${rows}, 1fr)`
 
   //creation of frontend grid
-  for(let x = 0; x < rows; x++) {
-    for(let y = 0; y < cols; y++) {
+  for(let boardRow = 0; boardRow < rows; boardRow++) {
+    for(let boardCol = 0; boardCol < cols; boardCol++) {
       let item = document.createElement("div")
-      item.setAttribute("row", x)
-      item.setAttribute("col", y)
+      item.setAttribute("row", boardRow)
+      item.setAttribute("col", boardCol)
       gridContainer.append(item)
 
       //setting oustide borders to none
-      if(x === 0){
+      if(boardRow === 0){
         item.style.borderTop = "none"
       }
 
-      if(x === rows-1) {
+      if(boardRow === rows-1) {
         item.style.borderBottom = "none"
       }
 
-      if(y === 0) {
+      if(boardCol === 0) {
         item.style.borderLeft = "none"
       }
 
-      if(y === cols-1){
+      if(boardCol === cols-1){
         item.style.borderRight = "none"
       }
     }
