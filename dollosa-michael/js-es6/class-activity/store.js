@@ -1,7 +1,8 @@
-// refactor Store js code into  Class approach
-// extends Store Class capability to Book
-// extends Store Class capability to Laptops
-// total earnings should reflect to Store class
+// refactor Store js code into  Class approach -> class MainStore
+// extends MainStore Class capability to BookStore -> imagine  BookStore is intended only for books
+// overall items should reflect in MainStore
+// total earnings should reflect to MainStore class and also BookStore
+//any addition or method to child must reflect on parent
 
 //refactored Store in a way that it manipulates "item" instead of just Books
 class Store{
@@ -12,22 +13,20 @@ class Store{
   }
 
   // findItem
-  findItem(itemName){
-    //destructure this (optional)
+  findItem(itemName, storeName){
     let { name, list, earnings} = this
-    //find specified item
-    const item = list.find((item) => item.title === itemName);
+    const item = list.find((item) => item.title === itemName && item.store === storeName);
     return item
   }
 
   //addItem fn
   addItem(title, quantity, value){
-    let newItem = {title: title, quantity: quantity, value: value}
+    let newItem = {store: this.name, title: title, quantity: quantity, value: value}
     this.list.push(newItem);
     console.log(`Added item ${title} to ${this.name}'s inventory`)
   }
 
-  //can be improved by setting conditio if item type is book or laptop
+  //restockItem
   restockItem(title, quantity) {
     //use findItem
     const item = this.findItem(title)
@@ -36,86 +35,105 @@ class Store{
     console.log(`Restocked ${title} by ${quantity} here at ${this.name}`);
   };
 
-  //sellItem - //can be improved by setting conditio if item type is book or laptop
+  //sellItem
   sellItem(itemTitle, itemQuantity) {
-    //use findItem method
     const item = this.findItem(itemTitle)
-    //return invalid early if no book found
     if(!item) return console.log(`We don't sell that item here at ${this.name}`)
-    //destructure item
-    let {title, quantity, value} = item
-    //return invalid early if quantity is insufficients
-    if(quantity < itemQuantity) return console.log(`${title} has only ${quantity} left here at ${this.name}`)
-    //main logic for sell
-    quantity -= itemQuantity
-    this.earnings = itemQuantity * value
-    return console.log(`Sold ${title} successfully`)
+    if(item.quantity < itemQuantity) return console.log(`${item.title} has only ${item.quantity} left here at ${this.name}`)
+    item.quantity -= itemQuantity
+    this.earnings += itemQuantity * item.value
+    return console.log(`Sold ${item.title} successfully`)
   };
-
-  collectFranchiseEarnings(specificStoreEarnings) {
-    this.earnings += specificStoreEarnings
-  }
 
   totalEarnings() {
     console.log(`${this.name} has earnings of ${this.earnings}`);
   };
   
   listInventory() {
-    this.list.map((book) => {
-      console.log(`${book.title}, ${book.quantity}, ${book.value}`);
+    console.log(`${this.name}'s INVENTORY`)
+    this.list.map((item) => {
+      console.log(`${item.store}: ${item.title}, ${item.quantity}, ${item.value}`);
     });
   };
 }
 
-class Book extends Store{
-  constructor(name, list, earnings){
+class Franchise extends Store{
+  constructor(name, list, earnings, parentStore){
     super(name, list, earnings)
+    this.parentStore = parentStore
   }
 
-}
+  // overwrite findItem of parent class
+  findItem(itemName){
+    let { name, list, earnings} = this
+    const item = list.find((item) => item.title === itemName && item.store === name);
+    return item
+  }
 
-class Laptop extends Store{
-  constructor(name, list, earnings){
-    super(name, list, earnings)
+  addItem(title, quantity, value){
+    super.addItem(title, quantity, value)
+    //needs to definev ariable agian to be pushed to parent Store
+    let newItem = {store: this.name, title: title, quantity: quantity, value: value}
+    this.parentStore.list.push(newItem)
+  }
+
+  restockItem(itemTitle, itemQuantity){
+    super.restockItem(itemTitle, itemQuantity)
+    const item = this.parentStore.findItem(itemTitle, this.name)
+    if(!item) return
+    item.quantity += itemQuantity
+  }
+
+  sellItem(itemTitle, itemQuantity){
+    super.sellItem(itemTitle, itemQuantity)
+    const item = this.parentStore.findItem(itemTitle, this.name)
+    if(!item) return
+    if(item.quantity < itemQuantity) return
+    item.quantity -= itemQuantity
+    this.parentStore.earnings += itemQuantity * item.value
   }
 }
+
 
 //create instance of main store
 let mainStore = new Store("Main Store", [], 0);
-let bookStore = new Book("Book Store", [], 0)
-let laptopStore = new Laptop("Laptop Store", [], 0)
+let bookStore = new Franchise("Book Store", [], 0, mainStore)
+let laptopStore = new Franchise("Laptop Store", [], 0, mainStore)
 
 //addbook
+console.log("####ADD ITEMS####")
 bookStore.addItem("Cinder", 10, 300);
 bookStore.addItem("The Little Prince", 10, 300);
 bookStore.addItem("Lord of the RIngs", 2, 500);
-//add item invalidate
-bookStore.addItem("Food","Lord of the RIngs", 2, 500);
-// //add laptops
-laptopStore.addItem("Acer", 10, 30000);
-laptopStore.addItem("MSI", 10, 30000);
-laptopStore.addItem("Asus", 2, 150000);
-//sell books - happy path
+//addlaptop
+laptopStore.addItem("Acer", 500, 30000)
+laptopStore.addItem("Asus", 300, 50000)
+//restock books
+console.log("####RESTOCK ITEMS####")
+bookStore.restockItem("Cinder", 5);
+laptopStore.restockItem("Asus", 100)
+// //restock book invalid
+bookStore.restockItem("Harry Potter", 4);
+laptopStore.restockItem("MSI", 100)
+// sell books - happy path
+console.log("####SELL ITEMS####")
 bookStore.sellItem("Cinder", 1)
-//sell laptop - happy path
-laptopStore.sellItem("Acer", 1)
+laptopStore.sellItem("Acer", 100)
 //sell books - no book condition
 bookStore.sellItem("Cinder123", 1)
-//sell books - quantitiy insufficient
+laptopStore.sellItem("MSI", 100)
+// //sell books - quantitiy insufficient
 bookStore.sellItem("Cinder", 1000000)
-//restock books
-bookStore.restockItem("Cinder", 5);
-//restock book invalid
-bookStore.restockItem("Harry Potter", 4);
-//update earning of main store
-mainStore.collectFranchiseEarnings(bookStore.earnings)
-mainStore.collectFranchiseEarnings(laptopStore.earnings)
-//list earning
+laptopStore.sellItem("Acer", 1000000)
+// //list earning
+console.log("####LIST EARNINGS####")
 bookStore.totalEarnings();
-laptopStore.totalEarnings();
 mainStore.totalEarnings();
+laptopStore.totalEarnings();
 //list inventory
+console.log("####LIST INVENTORY####")
 bookStore.listInventory();
 laptopStore.listInventory();
+mainStore.listInventory();
 
 
