@@ -5,11 +5,15 @@
 //any addition or method to child must reflect on parent
 
 //refactored Store in a way that it manipulates "item" instead of just Books
+
+import { addMsg, restockMsg, sellMsg } from "./mixin.js"
+
 class Store{
   constructor(name, list, earnings){
     this.name = name,
     this.list = list,
     this.earnings = earnings
+    Object.assign(this, addMsg, restockMsg, sellMsg)
   }
 
   // findItem
@@ -23,7 +27,8 @@ class Store{
   addItem(title, quantity, value){
     let newItem = {store: this.name, title: title, quantity: quantity, value: value}
     this.list.push(newItem);
-    console.log(`Added item ${title} to ${this.name}'s inventory`)
+    addMsg(title, this.name)
+    // console.log(`Added item ${title} to ${this.name}'s inventory`)
   }
 
   //restockItem
@@ -32,17 +37,18 @@ class Store{
     const item = this.findItem(title)
     if(!item) return console.log(`We don't have that item ${title} here at ${this.name}`)
     item.quantity += quantity
-    console.log(`Restocked ${title} by ${quantity} here at ${this.name}`);
+    restockMsg(title, quantity, this.name)
+    // console.log(`Restocked ${title} by ${quantity} here at ${this.name}`);
   };
 
   //sellItem
   sellItem(itemTitle, itemQuantity) {
     const item = this.findItem(itemTitle)
-    if(!item) return console.log(`We don't sell that item here at ${this.name}`)
-    if(item.quantity < itemQuantity) return console.log(`${item.title} has only ${item.quantity} left here at ${this.name}`)
+    if(!item) return sellMsg.noItem(this.name)
+    if(item.quantity < itemQuantity) return sellMsg.insufficientItem(item.title, item.quantity, this.name)
     item.quantity -= itemQuantity
     this.earnings += itemQuantity * item.value
-    return console.log(`Sold ${item.title} successfully`)
+    return sellMsg.success(item.title)
   };
 
   totalEarnings() {
@@ -72,7 +78,6 @@ class Franchise extends Store{
 
   addItem(title, quantity, value){
     super.addItem(title, quantity, value)
-    //needs to definev ariable agian to be pushed to parent Store
     let newItem = {store: this.name, title: title, quantity: quantity, value: value}
     this.parentStore.list.push(newItem)
   }
