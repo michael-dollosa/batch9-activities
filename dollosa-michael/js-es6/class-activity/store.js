@@ -99,7 +99,6 @@ class Franchise extends Store{
   }
 }
 
-
 //create instance of main store
 let mainStore = new Store("Main Store", [], 0);
 let bookStore = new Franchise("Book Store", [], 0, mainStore)
