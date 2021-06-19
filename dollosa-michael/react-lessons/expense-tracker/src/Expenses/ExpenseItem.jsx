@@ -3,18 +3,15 @@ import Card from "../UI/Card"
 import ExpenseDate from "./ExpenseDate"
 import "./ExpenseItem.css"
 
-const ExpenseItem = (props) => {
+const ExpenseItem = ({ title, date, amount}) => {
   return(
-    <Card className="expenses">
-      <div className="expense-item">
-        <ExpenseDate />
-        <div className="expense-item__description">
-          <h2>Car Insurance</h2>
-          <div className="expense-item__price">$100000</div>
-        </div>
-     </div>
+    <Card className="expense-item">
+      <ExpenseDate date={date}/>
+      <div className="expense-item__description">
+        <h2>{title}</h2>
+        <div className="expense-item__price">{amount}</div>
+      </div>
     </Card>
-
   )
   
 }
