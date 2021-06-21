@@ -1,7 +1,6 @@
-import React, { useState } from "react"
 import "./App.css"
-import ExpenseItem from "./Expenses/ExpenseItem"
-import Card from "./UI/Card"
+import Expenses from "./Expenses/Expenses"
+
 const DUMMY_EXPENSES = [
   {
     title: "Car Insurance",
@@ -28,13 +27,7 @@ const DUMMY_EXPENSES = [
 const App = () => {
   return(
     <div className="App">
-      <Card className="expenses">
-      {/*asda*/}
-        <ExpenseItem />
-        <ExpenseItem />
-        <ExpenseItem />
-        <ExpenseItem />
-      </Card>
+      <Expenses expenses={DUMMY_EXPENSES}/>
     </div>
   )
    
