@@ -6,7 +6,6 @@ import { useState } from "react"
 
 const Expenses = (props) => {
   const [option, setOption] = useState(2021)
-
   const handleOption = event => {
     setOption(parseInt(event.target.value))
   }
