@@ -2,7 +2,6 @@ import { useState } from "react"
 import ExpenseForm from "./ExpenseForm"
 import "./NewExpense.css"
 
-
 const NewExpense = (props) => {
   const [toggleExpenseForm, setToggleExpenseForm] = useState(true)
   const handleToggleExpenseForm = () => {
@@ -13,7 +12,6 @@ const NewExpense = (props) => {
       ...enteredExpenseData,
       id: Math.random().toString(),
     }
-
     props.onAddExpense(expenseData)
   }
 
@@ -21,11 +19,14 @@ const NewExpense = (props) => {
     <div className="new-expense">
       {
         toggleExpenseForm 
-        ? <button onClick={handleToggleExpenseForm}> Add Expense Chenlyn </button>
+        ? <button onClick={handleToggleExpenseForm}> Add Expense Chenelyn </button>
         : <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} handleToggleExpenseForm={handleToggleExpenseForm} />
       }
     </div>
   )
+  
+  
+
 }
 
 export default NewExpense
