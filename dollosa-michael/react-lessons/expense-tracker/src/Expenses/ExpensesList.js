@@ -17,7 +17,7 @@ const ExpensesList = ({items, option}) => {
   })
   
   return(
-    <ul className="expenses-list" >
+    <ul className="expenses-list" data-testid="expenses-list">
       {expenseListComponent}
     </ul>
   )

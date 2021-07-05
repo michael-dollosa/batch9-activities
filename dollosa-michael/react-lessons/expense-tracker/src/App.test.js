@@ -1,8 +1,16 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from '@testing-library/react' // (or /dom, /vue, ...)
+import Expenses from './Expenses/Expenses'
+import NewExpense from './NewExpense/NewExpense'
+import sampleData from "./data"
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test('should show New Expense component', () => {
+  render(<NewExpense />)
+  expect(screen.getByTestId("new-expense")).toBeDefined()
+  // Events and assertions...
+})
+
+test('should show Expense component', () => {
+  render(<Expenses expenses={sampleData}/>)
+  expect(screen.getByTestId("expenses")).toBeDefined()
+  // Events and assertions...
+})

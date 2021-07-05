@@ -19,7 +19,7 @@ const Expenses = (props) => {
 
   console.log(arrExpense.length > 0)
   return(
-    <div>
+    <div data-testid="expenses">
       <Card className="expenses">
         <ExpensesFilter items={props.expenses} handleOption={handleOption} option={option}/>
         <ExpensesChart expenses={arrExpense} />
