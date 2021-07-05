@@ -16,7 +16,7 @@ const NewExpense = (props) => {
   }
 
   return(
-    <div className="new-expense">
+    <div className="new-expense" data-testid="new-expense">
       {
         toggleExpenseForm 
         ? <button onClick={handleToggleExpenseForm}> Add Expense Chenelyn </button>
